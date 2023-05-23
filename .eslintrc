@@ -1,0 +1,8 @@
+{
+  "extends": [
+    "next",
+    "plugin:prettier/recommended" //Should always go last
+  ],
+  "parser": "@typescript-eslint/parser",
+  "root": true
+}
