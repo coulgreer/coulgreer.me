@@ -4,10 +4,10 @@ import React from "react";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
-export default function Home() {
+export default function Blog() {
   return (
     <Paper component="main">
-      <Typography variant="h2">Welcome to NEXT.js!</Typography>
+      <Typography variant="h2">Blog</Typography>
     </Paper>
   );
 }

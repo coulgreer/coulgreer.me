@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"src/**/*\" \"cypress/e2e/**/*\"",
+    "format": "prettier --write src cypress/e2e __tests__",
     "test:unit": "jest",
     "test:e2e": "cypress open --e2e"
   },

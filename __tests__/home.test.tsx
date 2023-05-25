@@ -4,15 +4,15 @@ import Home from "../src/app/page";
 import "@testing-library/jest-dom";
 
 describe("Home", () => {
-  it("renders a heading", () => {
+  it("renders a heading and landmarks", () => {
     render(<Home />);
 
-    const nav = screen.getByRole("navigation");
+    const main = screen.getByRole("main");
     const heading = screen.getByRole("heading", {
       name: /welcome to next\.js!/i,
     });
 
-    expect(nav).toBeInTheDocument();
+    expect(main).toBeInTheDocument();
     expect(heading).toBeInTheDocument();
   });
 });
