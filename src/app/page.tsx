@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 
 export default function Home() {
   return (
-    <Paper component="main">
+    <Paper>
       <Typography variant="h2">Welcome to NEXT.js!</Typography>
     </Paper>
   );

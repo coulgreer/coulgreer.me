@@ -7,12 +7,10 @@ describe("Blog", () => {
   it("renders a heading and landmarks", () => {
     render(<Blog />);
 
-    const main = screen.getByRole("main");
     const heading = screen.getByRole("heading", {
       name: /blog/i,
     });
 
-    expect(main).toBeInTheDocument();
     expect(heading).toBeInTheDocument();
   });
 });

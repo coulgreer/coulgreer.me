@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 
 export default function Blog() {
   return (
-    <Paper component="main">
+    <Paper>
       <Typography variant="h2">Blog</Typography>
     </Paper>
   );

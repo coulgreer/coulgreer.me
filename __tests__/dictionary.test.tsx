@@ -7,12 +7,10 @@ describe("Dictionary", () => {
   it("renders a heading and landmarks", () => {
     render(<Dictionary />);
 
-    const main = screen.getByRole("main");
     const heading = screen.getByRole("heading", {
       name: /dictionary/i,
     });
 
-    expect(main).toBeInTheDocument();
     expect(heading).toBeInTheDocument();
   });
 });
