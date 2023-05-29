@@ -1,15 +1,20 @@
 describe("Navigation", () => {
-  it("should navigate to the about page", () => {
+  beforeEach(() => {
     // Start from the index page
     cy.visit("/");
+  });
 
-    // Find a link with an href attribute containing "about" and click it
-    cy.get('a[href*="recipes"]').click();
+  it("should navigate to the about page", () => {
+    cy.findByRole("link", { name: /cookbook/i }).click();
 
-    // The new url should include "/about"
+    const nav = cy.findByRole("navigation");
+    const footer = cy.findByRole("contentinfo");
+    const heading = cy.findByRole("heading", { name: /recipes/i });
+
     cy.url().should("include", "/recipes");
 
-    // The new page should contain an h1 with "About page"
-    cy.get("h2").contains("Recipes");
+    nav.should("exist");
+    footer.should("exist");
+    heading.should("exist");
   });
 });
