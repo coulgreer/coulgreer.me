@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import FireflyDecor from "../components/FireflyDecor";
 
 import "../globals.css";
 
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         <main>{children}</main>
+        <FireflyDecor />
         <Footer />
       </body>
     </html>

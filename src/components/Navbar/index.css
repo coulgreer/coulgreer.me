@@ -1,3 +1,7 @@
+:root {
+  --navbar-height: 60px;
+}
+
 @keyframes show {
   from {
     transform: scaleX(0);
@@ -56,18 +60,18 @@
   animation: spin-bottom 6s 1;
 }
 
-.navbar {
+.navbar__menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  width: 100%;
+  width: 100vw;
   padding: 0 40px;
   background-color: rgb(var(--color-brand-1-rgb));
   color: rgb(var(--color-brand-1-c-2-rgb));
 }
 
-.navbar,
+.navbar__menu,
 .navbar__link-list {
   list-style-type: none;
 }

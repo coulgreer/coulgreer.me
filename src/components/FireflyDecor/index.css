@@ -1,0 +1,71 @@
+:root {
+  --color-firefly-1: #fff3a1;
+  --color-nest-1-rgba: 255, 243, 161, 0.5;
+}
+
+@keyframes flicker {
+  from {
+    box-shadow: 0 0 20px 5px var(--color-firefly-1);
+  }
+
+  to {
+    box-shadow: 0 0 5px 5px var(--color-firefly-1);
+  }
+}
+
+@keyframes float {
+  0% {
+    bottom: 0;
+  }
+
+  20% {
+    transform: translateX(60px);
+  }
+
+  40% {
+    transform: translateX(-60px);
+  }
+
+  60% {
+    transform: translateX(60px);
+  }
+
+  74% {
+    transform: translateX(-60px);
+  }
+
+  75%,
+  100% {
+    bottom: 50%;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.nest {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 100%;
+}
+
+.nest__firefly {
+  position: absolute;
+  bottom: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-firefly-1);
+  animation: flicker 5s linear 1s infinite alternate,
+    float 12s ease-in-out 1s infinite, fadeOut 12s 1s infinite;
+}

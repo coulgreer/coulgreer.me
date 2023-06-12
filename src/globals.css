@@ -9,15 +9,28 @@
   --color-logo-top: #ff218c;
   --color-logo-focal: #ffd800;
   --color-logo-bottom: #21b1ff;
+  --z-main-content: 1000;
+  --z-above: 1;
+  --z-below: -1;
 }
 
 html,
 body {
-  text-align: center;
+  padding: 0;
+  margin: 0;
+  min-height: 100%;
   max-width: 100vw;
+  color: #fff;
   background-color: rgb(var(--color-site-1-rgb));
 }
 
+body {
+  position: relative;
+}
+
 main {
-  margin-top: 70px;
+  position: relative;
+  margin: 90px 10% 20px;
+  width: 80%;
+  min-height: calc(100vh - var(--navbar-height));
 }

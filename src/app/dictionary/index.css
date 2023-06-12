@@ -1,0 +1,124 @@
+.word-entry {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 20px auto auto 40px;
+  grid-template-rows: auto 5px auto 40px;
+  z-index: var(--z-main-content);
+}
+
+.word-entry__divider {
+  margin-right: 0;
+  width: 33%;
+  height: 4px;
+  background-color: rgba(256, 256, 256, 0.8);
+}
+
+.word-entry__header,
+.word-entry__header-extension {
+  position: relative;
+  background-color: rgb(var(--color-brand-1-rgb), 0.8);
+}
+
+.word-entry__header::before,
+.word-entry__header-extension::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: -9px;
+  right: 0;
+  bottom: 0;
+  border: 0 solid #fff;
+  border-left-width: 10px;
+}
+
+.word-entry__header {
+  grid-row: 1 / span 2;
+  grid-column-start: 3;
+  padding: 1em;
+  z-index: calc(var(--z-main-content) + var(--z-above));
+}
+
+.word-entry__header-extension {
+  grid-row: 3 / span 2;
+  grid-column-start: 3;
+  z-index: calc(var(--z-main-content) + var(--z-above));
+}
+
+.word-entry__body,
+.word-entry__body-extension {
+  background-color: rgba(var(--color-site-1-rgb), 0.8);
+  border-style: solid;
+  border-color: rgba(var(--color-brand-1-c-3-rgb), 0.8);
+}
+
+.word-entry__body-extension {
+  grid-row-start: 3;
+  grid-column: 3 / span 2;
+}
+
+.word-entry__body {
+  padding: 0 4px;
+  border-width: 6px 0 6px 6px;
+  box-shadow: -5px 0 12px rgb(var(--color-brand-1-c-3-rgb));
+  grid-row-start: 3;
+  grid-column: 1 / span 2;
+}
+
+.word-entry__body-extension {
+  border-width: 6px 6px 6px 0;
+  box-shadow: 5px 3px 12px -4px rgb(var(--color-brand-1-c-3-rgb)),
+    5px -3px 12px -4px rgb(var(--color-brand-1-c-3-rgb));
+  z-index: calc(var(--z-main-content) + var(--z-below));
+}
+
+.word-entry__headword {
+  text-align: center;
+  text-transform: lowercase;
+}
+
+.word-entry__pronunciation {
+  text-align: right;
+}
+
+.word-entry__part-of-speech {
+  text-align: right;
+}
+
+.word-entry__definition {
+  font-size: 1.25em;
+}
+
+.quote {
+  text-align: center;
+}
+
+.quote__text::after,
+.quote__text::before {
+  content: '"';
+}
+
+.quote__text {
+}
+
+.quote__source {
+  margin-top: 4px;
+  font-size: 0.9em;
+}
+
+.quote__author {
+  margin: 0;
+  text-indent: -3em;
+}
+
+.quote__creative-work {
+  margin: 0;
+}
+
+.quote__context {
+  margin: 0;
+  text-indent: 3em;
+}

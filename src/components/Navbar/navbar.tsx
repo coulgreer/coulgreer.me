@@ -10,8 +10,8 @@ import "./index.css";
 
 export default function Navbar() {
   return (
-    <AppBar component="nav">
-      <List className="navbar">
+    <AppBar component="nav" className="navbar">
+      <List className="navbar__menu">
         <ListItem>
           <Link href="/">
             <svg
