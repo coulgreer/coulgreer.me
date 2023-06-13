@@ -1,9 +1,21 @@
 import React from "react";
+import { Ubuntu, Literata } from "@next/font/google";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FireflyDecor from "../components/FireflyDecor";
 
 import "../globals.css";
+
+const ubuntu = Ubuntu({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-ubuntu",
+});
+
+const literata = Literata({
+  subsets: ["latin"],
+  variable: "--font-literata",
+});
 
 export const metadata = {
   title: "Coul Greer, Here",
@@ -17,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${ubuntu.variable} ${literata.variable}`}>
       <body>
         <Navbar />
         <main>{children}</main>

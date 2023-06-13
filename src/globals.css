@@ -28,8 +28,7 @@ html {
 }
 
 body {
-  font-family: 'Literata', serif;
-  font-weight: false;
+  font-family: var(--font-literata);
   line-height: 1.65;
 }
 
@@ -48,13 +47,14 @@ h5 {
 h1,
 h2,
 h3 {
-  font-family: "Ubuntu", sans-serif;
-  font-weight: false;
+  font-family: var(--font-ubuntu);
+  font-weight: 400;
 }
 
 h4,
 h5 {
-  font-weight: true;
+  font-family: var(--font-ubuntu);
+  font-weight: 700;
 }
 
 h1,
