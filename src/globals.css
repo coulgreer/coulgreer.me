@@ -28,6 +28,7 @@ html {
 }
 
 body {
+  position: relative;
   font-family: var(--font-literata);
   line-height: 1.65;
 }
@@ -92,13 +93,12 @@ small,
   font-size: 0.69em;
 }
 
-body {
-  position: relative;
-}
-
 main {
   position: relative;
-  margin: 90px 10% 20px;
-  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: calc(var(--navbar-height) + 20px) 0;
+  padding: 0 50px;
   min-height: calc(100vh - var(--navbar-height));
 }
