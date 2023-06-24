@@ -1,18 +1,16 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Dictionary from "../src/app/dictionary/page";
 import "@testing-library/jest-dom";
+import Dictionary from "../src/app/dictionary/page";
 
 describe("Dictionary", () => {
-  it("should render a heading and a quote", () => {
+  it("should render a list of vocabulary words", () => {
     render(<Dictionary />);
 
-    const heading = screen.getByRole("heading", {
-      name: /cacophonous/i,
-    });
-    const quote = screen.getByRole("figure");
+    const list = screen.getByRole("list");
+    const link = screen.getByRole("link");
 
-    expect(heading).toBeInTheDocument();
-    expect(quote).toBeInTheDocument();
+    expect(list).toBeInTheDocument();
+    expect(link).toBeInTheDocument();
   });
 });

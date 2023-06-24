@@ -101,4 +101,5 @@ main {
   margin: calc(var(--navbar-height) + 20px) 0;
   padding: 0 50px;
   min-height: calc(100vh - var(--navbar-height));
+  z-index: var(--z-main-content);
 }
