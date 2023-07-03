@@ -1,0 +1,5 @@
+{
+  "202_RESPONSE": "hello",
+  "404_RESPONSE": "phrase_not_word",
+  "500_RESPONSE": "server_failure"
+}

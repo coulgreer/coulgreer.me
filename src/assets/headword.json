@@ -1,0 +1,30 @@
+[
+  {
+    "word": "mystique",
+    "phonetic": "/mɪˈstiːk/",
+    "phonetics": [
+      {
+        "text": "/mɪˈstiːk/",
+        "audio": ""
+      }
+    ],
+    "meanings": [
+      {
+        "partOfSpeech": "noun",
+        "definitions": [
+          {
+            "definition": "a quality of being special in a mysterious and attractive way",
+            "synonyms": [],
+            "antonyms": []
+          }
+        ],
+        "synonyms": [],
+        "antonyms": []
+      }
+    ],
+    "quote": "Now this word is, truly, mystique! Out of the blue it's come to you. When you were expecting another? But how could that be unless... Oh, no! An error with the API call. Now this is intriguing. Sorry about that. Don't worry your pretty little head. We- I am working to fix it just for you!",
+    "author": "A little scientist",
+    "bodyOfWork": "The World We Live In",
+    "granularContext": "Tapped Upon a Laptop"
+  }
+]
