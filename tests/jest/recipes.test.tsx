@@ -1,14 +1,16 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Home from "../src/app/page";
+import Recipe from "../../src/app/recipes/page";
 import "@testing-library/jest-dom";
 
-describe("Home", () => {
+describe("Recipes", () => {
   it("renders a heading and landmarks", () => {
-    render(<Home />);
+    render(<Recipe />);
+
     const heading = screen.getByRole("heading", {
-      name: /welcome to next\.js!/i,
+      name: /recipes/i,
     });
+
     expect(heading).toBeInTheDocument();
   });
 });

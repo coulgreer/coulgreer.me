@@ -1,12 +1,12 @@
 import React from "react";
-import Headword from "../src/app/dictionary/[headword]/page";
+import Headword from "../../src/app/dictionary/[headword]/page";
 
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import validHeadwordData from "../__mocks__/hello.json";
-import headwords from "../__mocks__/headwords.json";
-import fallbackData from "../src/assets/headword.json";
+import validHeadwordData from "../__fixtures__/hello.json";
+import headwords from "../__fixtures__/headwords.json";
+import fallbackData from "../../src/assets/headword.json";
 
 describe("Headword", () => {
   it("should render the loading state", () => {

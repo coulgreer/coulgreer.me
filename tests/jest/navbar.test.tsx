@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Navbar from "../src/components/navbar";
+import Navbar from "../../src/components/navbar";
 import "@testing-library/jest-dom";
 
 describe("Blog", () => {

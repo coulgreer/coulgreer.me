@@ -1,6 +1,6 @@
 import { rest } from "msw";
-import data from "./hello.json";
-import headwords from "./headwords.json";
+import data from "../__fixtures__/hello.json";
+import headwords from "../__fixtures__/headwords.json";
 
 export const handlers = [
   rest.get(
