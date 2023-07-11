@@ -1,1 +1,53 @@
-/* TODO (COUL): Sketch out the layout of the dictionary codex*/
+@keyframes warmup {
+  from {
+    color: rgb(var(--color-brand-1-c-2-rgb));
+    text-shadow: none;
+  }
+
+  to {
+    color: rgb(var(--color-brand-1-rgb));
+    text-shadow: rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem,
+      rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem,
+      rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem;
+  }
+}
+
+@keyframes pulse {
+  from {
+    text-shadow: rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem,
+      rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem,
+      rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem,
+      rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem,
+      rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem;
+  }
+
+  to {
+    text-shadow: rgb(var(--color-brand-1-c-2-rgb)) 0 0 0.75rem,
+      rgb(var(--color-brand-1-c-2-rgb)) 0 0 0.75rem,
+      rgb(var(--color-brand-1-c-2-rgb)) 0 0 0.75rem,
+      rgb(var(--color-brand-1-c-2-rgb)) 0 0 0.75rem;
+  }
+}
+
+.index__link {
+  text-decoration: none;
+  color: rgb(var(--color-brand-1-c-2-rgb));
+}
+
+.index__link:hover {
+  color: rgb(var(--color-brand-1-rgb));
+  animation: warmup 1s linear 1, pulse 2s linear 1s infinite alternate;
+}
+
+.index__word {
+  text-transform: capitalize;
+}
+
+.index__quote {
+  font-weight: 700;
+}
+
+.index__quote::before,
+.index__quote::after {
+  content: '"';
+}

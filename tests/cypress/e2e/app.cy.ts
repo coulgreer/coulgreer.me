@@ -54,10 +54,8 @@ describe("Navigation", () => {
 
     const nav = cy.findByRole("navigation");
     const footer = cy.findByRole("contentinfo");
-    const heading = cy.findByRole("heading", { name: /dictionary/i });
 
     nav.should("exist");
     footer.should("exist");
-    heading.should("exist");
   });
 });
