@@ -1,31 +1,11 @@
-@keyframes warmup {
-  from {
-    color: rgb(var(--color-brand-1-c-2-rgb));
-    text-shadow: none;
-  }
-
-  to {
-    color: rgb(var(--color-brand-1-rgb));
-    text-shadow: rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem,
-      rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem,
-      rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem;
-  }
-}
-
 @keyframes pulse {
-  from {
-    text-shadow: rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem,
-      rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem,
-      rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem,
-      rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem,
-      rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem;
+  0%,
+  50% {
+    opacity: 0;
   }
 
-  to {
-    text-shadow: rgb(var(--color-brand-1-c-2-rgb)) 0 0 0.75rem,
-      rgb(var(--color-brand-1-c-2-rgb)) 0 0 0.75rem,
-      rgb(var(--color-brand-1-c-2-rgb)) 0 0 0.75rem,
-      rgb(var(--color-brand-1-c-2-rgb)) 0 0 0.75rem;
+  25% {
+    opacity: 0.5;
   }
 }
 
@@ -36,11 +16,57 @@
 
 .index__link:hover {
   color: rgb(var(--color-brand-1-rgb));
-  animation: warmup 1s linear 1, pulse 2s linear 1s infinite alternate;
+  text-shadow: rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem,
+    rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem,
+    rgb(var(--color-brand-1-c-2-rgb)) 0 0 2rem;
+  transition: text-shadow 1s linear, color 1s linear;
+}
+
+.index__link:hover .index__word-decor--top.index__word-decor--left,
+.index__link:hover .index__word-decor--bottom.index__word-decor--right {
+  animation: pulse 4s linear 1s infinite;
+}
+
+.index__link:hover .index__word-decor--top.index__word-decor--right,
+.index__link:hover .index__word-decor--bottom.index__word-decor--left {
+  animation: pulse 4s linear 1s infinite reverse;
+}
+
+.index__word-container {
+  display: flex;
+  align-items: center;
 }
 
 .index__word {
   text-transform: capitalize;
+}
+
+.index__word-decor {
+  width: 24px;
+  height: 24px;
+  opacity: 0;
+  fill: rgb(var(--color-brand-1-c-1-rgb));
+}
+
+.index__decor-container {
+  display: inline-grid;
+  grid-template-rows: auto auto;
+}
+
+.index__word-decor--top.index__word-decor--left {
+  transform: translate(8px, -12px) rotate(-10deg);
+}
+
+.index__word-decor--bottom.index__word-decor--left {
+  transform: translate(7px, 9px) rotate(-90deg);
+}
+
+.index__word-decor--bottom.index__word-decor--right {
+  transform: translate(-8px, 9px) rotate(-190deg);
+}
+
+.index__word-decor--top.index__word-decor--right {
+  transform: translate(-7px, -12px) rotate(-270deg);
 }
 
 .index__quote {
