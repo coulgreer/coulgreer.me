@@ -73,6 +73,12 @@ function displayWords(list: Array<string>) {
 
 export default function Dictionary() {
   return (
-    <List className="index">{displayWords(["hello", "goodbye", "twice"])}</List>
+    <List className="index">
+      {displayWords([
+        "hello",
+        "goodbye",
+        "pneumonoultramicroscopicsilicovolcanoconiosis",
+      ])}
+    </List>
   );
 }

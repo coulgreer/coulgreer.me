@@ -4,8 +4,9 @@
 
 .word-entry {
   display: grid;
-  grid-template-columns: 20px auto auto 40px;
+  grid-template-columns: 20px auto minmax(20%, auto) 40px;
   grid-template-rows: auto 5px auto 40px;
+  max-width: 1000px;
   z-index: var(--z-main-content);
 }
 
@@ -13,25 +14,24 @@
   margin-right: 0;
   width: 33%;
   height: 4px;
-  background-color: rgba(256, 256, 256, 0.8);
+  background-color: rgba(var(--color-brand-1-c-1-rgb), 0.8);
 }
 
 .word-entry__header,
 .word-entry__header-extension {
   position: relative;
-  background-color: rgb(var(--color-brand-1-rgb), 0.8);
+  background-color: rgba(var(--color-brand-1-rgb), 0.8);
 }
 
 .word-entry__header::before,
 .word-entry__header-extension::before {
-  content: " ";
+  content: "";
   position: absolute;
   top: 0;
   left: calc(-1 * var(--header-border-size) + 1px);
   right: 0;
   bottom: 0;
-  border: 0 solid #fff;
-  border-left-width: var(--header-border-size);
+  border-left: var(--header-border-size) solid rgb(var(--color-brand-1-c-1-rgb));
 }
 
 .word-entry__header {
@@ -76,15 +76,20 @@
   z-index: calc(var(--z-main-content) + var(--z-below));
 }
 
+.word-entry__headword,
+.word-entry__pronunciation,
+.word-entry__part-of-speech {
+  text-align: right;
+}
+
 .word-entry__headword {
-  text-align: center;
   text-transform: lowercase;
+  overflow-wrap: break-word;
 }
 
 .word-entry__pronunciation,
 .word-entry__part-of-speech {
   margin: 0;
-  text-align: right;
 }
 
 .word-entry__definition {
