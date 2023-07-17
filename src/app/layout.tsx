@@ -1,5 +1,5 @@
 import React from "react";
-import { Ubuntu, Literata } from "@next/font/google";
+import { Ubuntu, Literata } from "next/font/google";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FireflyDecor from "../components/FireflyDecor";
