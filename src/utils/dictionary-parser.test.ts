@@ -1,7 +1,7 @@
-import * as dictionaryParser from "../../src/utils/dictionary-parser";
+import * as dictionaryParser from "./dictionary-parser";
 
-import noPhonetic from "../__fixtures__/no-phonetic-word.json";
-import standard from "../__fixtures__/standard-word.json";
+import noPhonetic from "../../__fixtures__/no-phonetic-word.json";
+import standard from "../../__fixtures__/standard-word.json";
 
 describe("Lazy Retrieval", () => {
   it("should retrieve the first valid data entry", () => {

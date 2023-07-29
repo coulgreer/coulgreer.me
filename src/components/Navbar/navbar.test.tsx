@@ -1,7 +1,7 @@
 import React from "react";
+import Navbar from "./navbar";
+
 import { render, screen } from "@testing-library/react";
-import Navbar from "../../src/components/navbar";
-import "@testing-library/jest-dom";
 
 describe("Blog", () => {
   it("renders a heading and landmarks", () => {

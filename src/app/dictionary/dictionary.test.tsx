@@ -1,8 +1,7 @@
 import React from "react";
-import Dictionary from "../../src/app/dictionary/page";
+import Dictionary from "./page";
 
 import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
 
 describe("Dictionary", () => {
   it("should render a list of vocabulary words", () => {

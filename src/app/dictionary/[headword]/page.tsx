@@ -6,7 +6,7 @@ import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import useSWR from "swr";
 
-import fallback from "../../../assets/headword.json";
+import fallback from "../../../data/headword.json";
 import { Data, Results, parse } from "../../../utils/dictionary-parser";
 import "./index.css";
 

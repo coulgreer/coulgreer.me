@@ -1,14 +1,14 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import Projects from "../../src/app/projects/page";
-import "@testing-library/jest-dom";
+import Recipe from "./page";
 
-describe("Projects", () => {
+import { render, screen } from "@testing-library/react";
+
+describe("Recipes", () => {
   it("renders a heading and landmarks", () => {
-    render(<Projects />);
+    render(<Recipe />);
 
     const heading = screen.getByRole("heading", {
-      name: /projects/i,
+      name: /recipes/i,
     });
 
     expect(heading).toBeInTheDocument();

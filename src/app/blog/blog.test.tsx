@@ -1,7 +1,7 @@
 import React from "react";
+import Blog from "./page";
+
 import { render, screen } from "@testing-library/react";
-import Blog from "../../src/app/blog/page";
-import "@testing-library/jest-dom";
 
 describe("Blog", () => {
   it("renders a heading and landmarks", () => {
