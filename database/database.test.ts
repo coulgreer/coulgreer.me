@@ -5,12 +5,12 @@ import path from "path";
 
 import * as database from "./database";
 
-let connection: Connection;
-
 beforeAll(async () => {
-  await database.establishConnection();
   await database.destroyTables();
-  await database.endConnection();
+});
+
+afterAll(async () => {
+  await database.endPool();
 });
 
 describe("Database", () => {
@@ -53,17 +53,10 @@ describe("Database", () => {
     },
   ];
 
-  it("should throw error when connection is closed", () => {
-    return database.getAllWords().catch(() => {
-      expect(true);
-    });
-  });
-
   describe("Queries", () => {
-    beforeEach(async () => {
-      await database.establishConnection();
-      await database.buildTables();
+    let connection: Connection;
 
+    beforeAll(() => {
       connection = mysql
         .createConnection({
           user: process.env.USER,
@@ -72,6 +65,10 @@ describe("Database", () => {
           multipleStatements: true,
         })
         .promise();
+    });
+
+    beforeEach(async () => {
+      await database.buildTables();
 
       const queries = fs
         .readFileSync(path.join(__dirname, "./model/test-data.sql"))
@@ -82,8 +79,10 @@ describe("Database", () => {
 
     afterEach(async () => {
       await database.destroyTables();
+    });
+
+    afterAll(async () => {
       await connection.end();
-      await database.endConnection();
     });
 
     it("should return all words", () => {
