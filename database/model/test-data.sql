@@ -5,7 +5,7 @@ VALUES
 ("The second citation's quote", "Him or her", "Cyberspace", "Then and there"),
 ("Some kind of quote used for the thrid citation", "Them and those", "Places Unknown", "Long ago");
 
-INSERT INTO part_of_speech (part_of_speech, abbreviation)
+INSERT INTO part_of_speech (full_form, abbreviation)
 VALUES ("noun", "n."), ("article", "art."), ("verb", "v.");
 
 INSERT INTO vocabulary

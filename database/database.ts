@@ -55,10 +55,10 @@ export async function destroyTables() {
 
 export async function getAllWords() {
   const [rows] = await pool.query<RowDataPacket[][]>(
-    `SELECT e.id, v.word, pos.part_of_speech, pos.abbreviation AS pos_abbreviation, v.phonetic, v.definition, c.quote, c.author, c.body_of_work, c.context
+    `SELECT e.id, v.word, pos.full_form AS pos_full_form, pos.abbreviation AS pos_abbreviation, v.phonetic, v.definition, c.quote, c.author, c.body_of_work, c.context
     FROM (((entry e
     INNER JOIN vocabulary v ON e.vocabulary_id = v.id)
-    INNER JOIN part_of_speech pos ON v.part_of_speech = pos.part_of_speech)
+    INNER JOIN part_of_speech pos ON v.part_of_speech = pos.full_form)
     INNER JOIN citation c on e.citation_id = c.id);
     `
   );
@@ -68,10 +68,10 @@ export async function getAllWords() {
 
 export async function getWord(id: number) {
   const [rows] = await pool.query<RowDataPacket[][]>(
-    `SELECT e.id, v.word, pos.part_of_speech, pos.abbreviation AS pos_abbreviation, v.phonetic, v.definition, c.quote, c.author, c.body_of_work, c.context
+    `SELECT e.id, v.word, pos.full_form AS pos_full_form, pos.abbreviation AS pos_abbreviation, v.phonetic, v.definition, c.quote, c.author, c.body_of_work, c.context
     FROM (((entry e
     INNER JOIN vocabulary v ON e.vocabulary_id = v.id)
-    INNER JOIN part_of_speech pos ON v.part_of_speech = pos.part_of_speech)
+    INNER JOIN part_of_speech pos ON v.part_of_speech = pos.full_form)
     INNER JOIN citation c on e.citation_id = c.id)
     WHERE e.id = ?;
     `,

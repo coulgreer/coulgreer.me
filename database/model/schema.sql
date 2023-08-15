@@ -1,7 +1,7 @@
 CREATE TABLE part_of_speech (
-    part_of_speech varchar(255) NOT NULL,
+    full_form varchar(255) NOT NULL,
     abbreviation varchar(4),
-    PRIMARY KEY (part_of_speech)
+    PRIMARY KEY (full_form)
 );
 
 CREATE TABLE vocabulary (
@@ -11,7 +11,7 @@ CREATE TABLE vocabulary (
     phonetic varchar(255),
     definition varchar(255),
     PRIMARY KEY (id),
-    FOREIGN KEY (part_of_speech) REFERENCES part_of_speech(part_of_speech)
+    FOREIGN KEY (part_of_speech) REFERENCES part_of_speech(full_form)
 );
 
 CREATE TABLE citation (

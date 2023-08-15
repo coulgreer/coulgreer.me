@@ -39,7 +39,7 @@ describe("Database", () => {
       {
         id: 1,
         word: "quote",
-        part_of_speech: "noun",
+        pos_full_form: "noun",
         pos_abbreviation: "n.",
         phonetic: "",
         definition: "the definition of QUOTE",
@@ -51,7 +51,7 @@ describe("Database", () => {
       {
         id: 2,
         word: "the",
-        partOfSpeech: "article",
+        pos_full_form: "article",
         pos_abbreviation: "art.",
         phonetic: "",
         definition: "the definition of THE",
@@ -63,7 +63,7 @@ describe("Database", () => {
       {
         id: 3,
         word: "used",
-        partOfSpeech: "verb",
+        pos_full_form: "verb",
         pos_abbreviation: "v.",
         phonetic: "",
         definition: "the definition of USED",
@@ -136,7 +136,7 @@ describe("Database", () => {
       expect(row).toStrictEqual({
         id: entryId,
         word: vocab.word,
-        part_of_speech: vocab.partOfSpeech,
+        pos_full_form: vocab.partOfSpeech,
         pos_abbreviation,
         phonetic: vocab.phonetic,
         definition: vocab.definition,
