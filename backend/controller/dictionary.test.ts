@@ -3,7 +3,8 @@ import { Connection } from "mysql2/promise";
 import fs from "fs";
 import path from "path";
 
-import * as database from "./database";
+import * as dictionary from "./dictionary";
+import pool, * as database from "../config/database";
 
 describe("Database", () => {
   let connection: Connection;
@@ -30,7 +31,7 @@ describe("Database", () => {
   });
 
   afterAll(async () => {
-    await database.endPool();
+    await pool.end();
     await connection.end();
   });
 
@@ -76,14 +77,14 @@ describe("Database", () => {
 
     beforeEach(async () => {
       const queries = fs
-        .readFileSync(path.join(__dirname, "./model/test-data.sql"))
+        .readFileSync(path.join(__dirname, "../model/test-data.sql"))
         .toString();
 
       await connection.query(queries);
     });
 
     it("should return all words", () => {
-      return database.getAllWords().then((data) => {
+      return dictionary.getAllWords().then((data) => {
         const [rows] = data;
         for (let i = 0; i < rows.length; i++) {
           const row = rows[i];
@@ -94,7 +95,7 @@ describe("Database", () => {
     });
 
     it("should return specified word", () => {
-      return database.getWord(1).then((data) => {
+      return dictionary.getWord(1).then((data) => {
         const [row] = data;
         expect(row).toStrictEqual(entries[0]);
       });
@@ -102,7 +103,7 @@ describe("Database", () => {
 
     it("should return falsy data when query cannot find entry", () => {
       const invalidId = 9001;
-      return database.getWord(invalidId).then((data) => {
+      return dictionary.getWord(invalidId).then((data) => {
         const [row] = data;
         expect(row).toBeFalsy();
       });
@@ -130,9 +131,9 @@ describe("Database", () => {
       ]);
       await connection.query("ALTER TABLE entry AUTO_INCREMENT=?;", [entryId]);
 
-      await database.insertWord(citation, vocab);
+      await dictionary.insertWord(citation, vocab);
 
-      const [row] = await database.getWord(entryId);
+      const [row] = await dictionary.getWord(entryId);
       expect(row).toStrictEqual({
         id: entryId,
         word: vocab.word,

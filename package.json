@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write src cypress/e2e cypress/integration *.config.[jt]s *.setup.[jt]s",
+    "format": "prettier --write src backend cypress/e2e cypress/integration *.config.[jt]s *.setup.[jt]s",
     "test:unit": "jest",
     "test:e2e": "cypress open --e2e"
   },
