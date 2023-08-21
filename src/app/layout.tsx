@@ -1,10 +1,10 @@
 import React from "react";
 import { Ubuntu, Literata } from "next/font/google";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import FireflyDecor from "../components/FireflyDecor";
+import Navbar from "../frontend/components/Navbar";
+import Footer from "../frontend/components/Footer";
+import FireflyDecor from "../frontend/components/FireflyDecor";
 
-import "../globals.css";
+import "../frontend/globals.css";
 
 const ubuntu = Ubuntu({
   subsets: ["latin"],

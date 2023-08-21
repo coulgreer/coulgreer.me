@@ -5,7 +5,7 @@ import { render, screen } from "@testing-library/react";
 
 import validHeadwordData from "../../../../__fixtures__/hello.json";
 import headwords from "../../../../__fixtures__/headwords.json";
-import fallbackData from "../../../data/headword.json";
+import fallbackData from "../../../frontend/data/headword.json";
 
 describe("Headword", () => {
   it("should render the loading state", () => {

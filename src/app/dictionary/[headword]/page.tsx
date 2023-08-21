@@ -6,8 +6,12 @@ import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import useSWR from "swr";
 
-import fallback from "../../../data/headword.json";
-import { Data, Results, parse } from "../../../utils/dictionary-parser";
+import fallback from "../../../frontend/data/headword.json";
+import {
+  Data,
+  Results,
+  parse,
+} from "../../../frontend/utils/dictionary-parser";
 import "./index.css";
 
 type Display = {
