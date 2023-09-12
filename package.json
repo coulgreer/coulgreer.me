@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write src cypress/e2e cypress/integration *.config.[jt]s *.setup.[jt]s",
+    "test": "jest && cypress run --e2e",
     "test:unit": "jest",
     "test:e2e": "cypress open --e2e"
   },
