@@ -29,9 +29,21 @@ export async function getWord(id: number) {
   return rows;
 }
 
+export async function getWordId(word: string) {
+  const [rows] = await pool.query<RowDataPacket[]>(
+    `SELECT id
+      FROM vocabulary v
+      WHERE word = ?`,
+    [word]
+  );
+
+  return rows[0].id;
+}
+
 export async function insertWord(c: Citation, v: Vocabulary) {
   const vocabId = await getAutoIncrement("vocabulary");
   const citationId = await getAutoIncrement("citation");
+  const partOfSpeech = await checkPartOfSpeech(v);
 
   await pool.query(
     `
@@ -48,19 +60,19 @@ export async function insertWord(c: Citation, v: Vocabulary) {
     (word, part_of_speech, phonetic, definition)
     VALUES
     (?, ?, ?, ?);`,
-    [v.word, v.partOfSpeech, v.phonetic, v.definition]
+    [v.word, partOfSpeech, v.phonetic, v.definition]
   );
   await pool.query(
     `
-      INSERT entry (vocabulary_id, citation_id)
-      VALUES (?, ?)
+      INSERT INTO entry (vocabulary_id, citation_id)
+      VALUES (?, ?);
       `,
     [vocabId, citationId]
   );
 }
 
 async function getAutoIncrement(tableName: string) {
-  const [rows] = await pool.query(
+  const [rows] = await pool.query<RowDataPacket[]>(
     `
       SELECT AUTO_INCREMENT
       FROM INFORMATION_SCHEMA.TABLES
@@ -70,4 +82,25 @@ async function getAutoIncrement(tableName: string) {
   );
 
   return rows[0].AUTO_INCREMENT;
+}
+
+async function checkPartOfSpeech(v: Vocabulary) {
+  let [rows] = await pool.query<RowDataPacket[]>(
+    `SELECT *
+    FROM part_of_speech
+    WHERE full_form=?;`,
+    [v.partOfSpeech]
+  );
+
+  if (rows.length > 0) {
+    return v.partOfSpeech;
+  } else {
+    [rows] = await pool.query<RowDataPacket[]>(
+      `SELECT full_form
+      FROM part_of_speech
+      WHERE abbreviation=?;`,
+      [v.partOfSpeech]
+    );
+    return rows[0]["full_form"];
+  }
 }

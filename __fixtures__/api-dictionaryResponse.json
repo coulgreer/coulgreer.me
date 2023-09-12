@@ -1,0 +1,40 @@
+{
+  "words": [
+    {
+      "id": 1,
+      "word": "quote",
+      "pos_full_form": "noun",
+      "pos_abbreviation": "n.",
+      "phonetic": "",
+      "definition": "the definition of QUOTE",
+      "quote": "A quote for the first citation",
+      "author": "You or me",
+      "body_of_work": "Reality",
+      "context": "Here and now"
+    },
+    {
+      "id": 2,
+      "word": "the",
+      "pos_full_form": "article",
+      "pos_abbreviation": "art.",
+      "phonetic": "",
+      "definition": "the definition of THE",
+      "quote": "The second citation's quote",
+      "author": "Him or her",
+      "body_of_work": "Cyberspace",
+      "context": "Then and there"
+    },
+    {
+      "id": 3,
+      "word": "used",
+      "pos_full_form": "verb",
+      "pos_abbreviation": "v.",
+      "phonetic": "",
+      "definition": "the definition of USED",
+      "quote": "Some kind of quote used for the thrid citation",
+      "author": "Them and those",
+      "body_of_work": "Places Unknown",
+      "context": "Long ago"
+    }
+  ]
+}

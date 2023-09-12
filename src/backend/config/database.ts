@@ -36,12 +36,12 @@ export async function buildTables() {
     .readFileSync(path.join(__dirname, "../model/schema.sql"))
     .toString();
 
-  await pool.query(queries);
+  return await pool.query(queries);
 }
 
 export async function destroyTables() {
   // Order of dropped tables matter. Those with foriegn keys should be dropped first.
-  await pool.query(`
+  return await pool.query(`
     DROP TABLE IF EXISTS entry;
     DROP TABLE IF EXISTS citation;
     DROP TABLE IF EXISTS vocabulary;

@@ -2,11 +2,13 @@ import mysql from "mysql2";
 import { Connection } from "mysql2/promise";
 import fs from "fs";
 import path from "path";
+import entries from "../../../__fixtures__/api-dictionaryResponse.json";
 
 import * as dictionary from "./dictionary";
 import pool, * as database from "../config/database";
 
 describe("Database", () => {
+  const { words } = entries;
   let connection: Connection;
 
   beforeAll(async () => {
@@ -36,45 +38,6 @@ describe("Database", () => {
   });
 
   describe("Read", () => {
-    const entries = [
-      {
-        id: 1,
-        word: "quote",
-        pos_full_form: "noun",
-        pos_abbreviation: "n.",
-        phonetic: "",
-        definition: "the definition of QUOTE",
-        quote: "A quote for the first citation",
-        author: "You or me",
-        body_of_work: "Reality",
-        context: "Here and now",
-      },
-      {
-        id: 2,
-        word: "the",
-        pos_full_form: "article",
-        pos_abbreviation: "art.",
-        phonetic: "",
-        definition: "the definition of THE",
-        quote: "The second citation's quote",
-        author: "Him or her",
-        body_of_work: "Cyberspace",
-        context: "Then and there",
-      },
-      {
-        id: 3,
-        word: "used",
-        pos_full_form: "verb",
-        pos_abbreviation: "v.",
-        phonetic: "",
-        definition: "the definition of USED",
-        quote: "Some kind of quote used for the thrid citation",
-        author: "Them and those",
-        body_of_work: "Places Unknown",
-        context: "Long ago",
-      },
-    ];
-
     beforeEach(async () => {
       const queries = fs
         .readFileSync(path.join(__dirname, "../model/test-data.sql"))
@@ -88,8 +51,8 @@ describe("Database", () => {
         const [rows] = data;
         for (let i = 0; i < rows.length; i++) {
           const row = rows[i];
-          const entry = entries[i];
-          expect(row).toBe(entry);
+          const word = words[i];
+          expect(row).toBe(word);
         }
       });
     });
@@ -97,7 +60,7 @@ describe("Database", () => {
     it("should return specified word", () => {
       return dictionary.getWord(1).then((data) => {
         const [row] = data;
-        expect(row).toStrictEqual(entries[0]);
+        expect(row).toStrictEqual(words[0]);
       });
     });
 
@@ -106,6 +69,15 @@ describe("Database", () => {
       return dictionary.getWord(invalidId).then((data) => {
         const [row] = data;
         expect(row).toBeFalsy();
+      });
+    });
+
+    it("should return id", () => {
+      const [entry] = words;
+      const word = entry.word;
+
+      return dictionary.getWordId(word).then((data) => {
+        expect(data).toBe(entry.id);
       });
     });
   });
