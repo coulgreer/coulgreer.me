@@ -13,4 +13,4 @@ afterEach(() => server.resetHandlers());
 // Clean up after the tests are finished.
 afterAll(() => server.close());
 
-jest.mock("nanoid", () => ({ nanoid: () => new Date().getTime() }));
+jest.mock("nanoid", () => ({ nanoid: () => Math.random() }));
