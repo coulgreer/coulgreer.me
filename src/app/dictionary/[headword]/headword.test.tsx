@@ -40,6 +40,11 @@ describe("Headword", () => {
   });
 
   describe("Error Handling", () => {
+    const consoleError = console.error;
+    beforeAll(() => {
+      console.error = jest.fn();
+    });
+
     afterEach(async () => {
       const [data] = fallbackData;
       const [meaning] = data.meanings;
@@ -58,6 +63,10 @@ describe("Headword", () => {
       expect(partsOfSpeech).toBeInTheDocument();
       expect(definition).toBeInTheDocument();
       expect(quote).toBeInTheDocument();
+    });
+
+    afterAll(() => {
+      console.error = consoleError;
     });
 
     it("should render the fallback data when the given headword does not exist in the Dictionary API", async () => {
