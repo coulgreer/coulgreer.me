@@ -1,8 +1,8 @@
 import { RowDataPacket } from "mysql2";
-import pool, { Citation, Vocabulary } from "../config/database";
+import { query, Citation, Vocabulary } from "../config/database";
 
 export async function getAllWords() {
-  const [rows] = await pool.query<RowDataPacket[][]>(
+  const [rows] = await query(
     `SELECT e.id, v.word, pos.full_form AS pos_full_form, pos.abbreviation AS pos_abbreviation, v.phonetic, v.definition, c.quote, c.author, c.body_of_work, c.context
       FROM (((entry e
       INNER JOIN vocabulary v ON e.vocabulary_id = v.id)
@@ -15,7 +15,7 @@ export async function getAllWords() {
 }
 
 export async function getWord(id: number) {
-  const [rows] = await pool.query<RowDataPacket[][]>(
+  const [rows] = await query(
     `SELECT e.id, v.word, pos.full_form AS pos_full_form, pos.abbreviation AS pos_abbreviation, v.phonetic, v.definition, c.quote, c.author, c.body_of_work, c.context
       FROM (((entry e
       INNER JOIN vocabulary v ON e.vocabulary_id = v.id)
@@ -30,7 +30,7 @@ export async function getWord(id: number) {
 }
 
 export async function getWordId(word: string) {
-  const [rows] = await pool.query<RowDataPacket[]>(
+  const [rows] = await query(
     `SELECT id
       FROM vocabulary v
       WHERE word = ?`,
@@ -45,7 +45,7 @@ export async function insertWord(c: Citation, v: Vocabulary) {
   const citationId = await getAutoIncrement("citation");
   const partOfSpeech = await checkPartOfSpeech(v);
 
-  await pool.query(
+  await query(
     `
     INSERT INTO citation
     (quote, author, body_of_work, context)
@@ -54,7 +54,7 @@ export async function insertWord(c: Citation, v: Vocabulary) {
     `,
     [c.quote, c.author, c.bodyOfWork, c.context]
   );
-  await pool.query(
+  await query(
     `
     INSERT INTO vocabulary
     (word, part_of_speech, phonetic, definition)
@@ -62,7 +62,7 @@ export async function insertWord(c: Citation, v: Vocabulary) {
     (?, ?, ?, ?);`,
     [v.word, partOfSpeech, v.phonetic, v.definition]
   );
-  await pool.query(
+  await query(
     `
       INSERT INTO entry (vocabulary_id, citation_id)
       VALUES (?, ?);
@@ -72,7 +72,7 @@ export async function insertWord(c: Citation, v: Vocabulary) {
 }
 
 async function getAutoIncrement(tableName: string) {
-  const [rows] = await pool.query<RowDataPacket[]>(
+  const [rows] = await query(
     `
       SELECT AUTO_INCREMENT
       FROM INFORMATION_SCHEMA.TABLES
@@ -85,7 +85,7 @@ async function getAutoIncrement(tableName: string) {
 }
 
 async function checkPartOfSpeech(v: Vocabulary) {
-  let [rows] = await pool.query<RowDataPacket[]>(
+  let [rows] = await query(
     `SELECT *
     FROM part_of_speech
     WHERE full_form=?;`,
@@ -95,7 +95,7 @@ async function checkPartOfSpeech(v: Vocabulary) {
   if (rows.length > 0) {
     return v.partOfSpeech;
   } else {
-    [rows] = await pool.query<RowDataPacket[]>(
+    [rows] = await query(
       `SELECT full_form
       FROM part_of_speech
       WHERE abbreviation=?;`,

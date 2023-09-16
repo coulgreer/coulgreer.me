@@ -1,10 +1,8 @@
 import { defineConfig } from "cypress";
-import mysql from "mysql2";
-import { Connection } from "mysql2/promise";
 import fs from "fs";
 import path from "path";
 
-import pool, * as database from "./src/backend/config/database";
+import * as database from "./src/backend/config/database";
 
 export default defineConfig({
   fixturesFolder: "__fixtures__",
@@ -13,8 +11,6 @@ export default defineConfig({
     supportFile: "cypress/support/e2e.{j,t}s",
     specPattern: "cypress/{e2e,integration}/*cy.{j,t}s",
     setupNodeEvents(on) {
-      let connection: Connection;
-
       on("task", {
         setup: () => database.buildTables(),
         teardown: () => database.destroyTables(),
@@ -25,22 +21,12 @@ export default defineConfig({
             )
             .toString();
 
-          connection = mysql
-            .createConnection({
-              user: process.env.USER,
-              password: process.env.PASSWORD,
-              database: process.env.DATABASE,
-              multipleStatements: true,
-            })
-            .promise();
-
-          const results = connection.query(queries);
-          connection.end();
+          const results = database.query(queries);
 
           return results;
         },
-        cleanUp: () => {
-          pool.end();
+        cleanup: () => {
+          database.endPool();
           return null;
         },
       });

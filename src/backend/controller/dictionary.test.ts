@@ -1,26 +1,14 @@
-import mysql from "mysql2";
-import { Connection } from "mysql2/promise";
 import fs from "fs";
 import path from "path";
 import entries from "../../../__fixtures__/api-dictionaryResponse.json";
 
 import * as dictionary from "./dictionary";
-import pool, * as database from "../config/database";
+import * as database from "../config/database";
 
 describe("Database", () => {
   const { words } = entries;
-  let connection: Connection;
 
   beforeAll(async () => {
-    connection = mysql
-      .createConnection({
-        user: process.env.USER,
-        password: process.env.PASSWORD,
-        database: process.env.DATABASE,
-        multipleStatements: true,
-      })
-      .promise();
-
     await database.destroyTables();
   });
 
@@ -32,9 +20,8 @@ describe("Database", () => {
     await database.destroyTables();
   });
 
-  afterAll(async () => {
-    await pool.end();
-    await connection.end();
+  after(() => {
+    database.endPool();
   });
 
   describe("Read", () => {
@@ -43,7 +30,7 @@ describe("Database", () => {
         .readFileSync(path.join(__dirname, "../model/test-data.sql"))
         .toString();
 
-      await connection.query(queries);
+      await database.query(queries);
     });
 
     it("should return all words", () => {
@@ -98,10 +85,10 @@ describe("Database", () => {
         bodyOfWork: "Real Life",
         context: "June 20th",
       };
-      await connection.query("INSERT INTO part_of_speech VALUES ('noun', ?);", [
+      await database.query("INSERT INTO part_of_speech VALUES ('noun', ?);", [
         pos_abbreviation,
       ]);
-      await connection.query("ALTER TABLE entry AUTO_INCREMENT=?;", [entryId]);
+      await database.query("ALTER TABLE entry AUTO_INCREMENT=?;", [entryId]);
 
       await dictionary.insertWord(citation, vocab);
 

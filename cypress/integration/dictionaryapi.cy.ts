@@ -15,7 +15,7 @@ describe("Dictionary API", () => {
   });
 
   after(() => {
-    cy.task("cleanUp");
+    cy.task("cleanup");
   });
 
   describe("Getting words from dictionary", () => {
