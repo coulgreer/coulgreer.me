@@ -4,5 +4,6 @@
     "noEmit": true,
     "types": ["cypress", "@testing-library/cypress"]
   },
-  "include": ["../node_modules/cypress", "./**/*.ts"]
+  "include": ["../node_modules/cypress", "./**/*.cy.ts"],
+  "exclude": ["src/**/*.ts(x)"]
 }

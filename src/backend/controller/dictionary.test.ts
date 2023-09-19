@@ -20,7 +20,7 @@ describe("Database", () => {
     await database.destroyTables();
   });
 
-  after(() => {
+  afterAll(() => {
     database.endPool();
   });
 
